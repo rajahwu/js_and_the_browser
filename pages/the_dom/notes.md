@@ -90,7 +90,17 @@ console.log(link.href);
 
 * *getElementsByClassName*
 * *getElementsByTagName*
+  * retuens a *live* node list
+  * *solid* collection of nodes
 
+  ```js
+  // Array.from
+  let arrayish = {0: "one", 1: "two", length: 2};
+  let array = Array.from(arrayish);
+  console.log(array.map(s => s.toUpperCase()));
+  // → ["ONE", "TWO"]
+  ```
+  
 * *appendChild*
 * *insertBefore*
 
@@ -129,4 +139,26 @@ console.log(link.href);
 </script>
 ```
 
-[see in browser](./example.php)
+#### [see in browser](./example.php#create_node)
+
+### Attributes
+
+* *data-*
+* *getAttribute*
+* *setAttribute*
+
+```html
+<p data-classified="secret">The launch code is 00000000.</p>
+<p data-classified="unclassified">I have two feet.</p>
+
+<script>
+  let paras = document.body.getElementsByTagName("p");
+  for (let para of Array.from(paras)) {
+    if (para.getAttribute("data-classified") == "secret") {
+      para.remove();
+    }
+  }
+</script>
+```
+
+#### [see in browser](./example.php#attributes)
