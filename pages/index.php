@@ -1,4 +1,4 @@
 <?php
-$location = "public";
+$location = "../public";
 header("Location: " . $location);
 ?>
