@@ -234,3 +234,53 @@ A program that repeatedly alternates between reading DOM layout information and 
   * if rules have the same *specificity*
 
 ### Query Selector
+
+* *querySelectorAll*
+  * returns a *NodeList* containing all the elements it matches
+  * the object returned by *querySelectorAll* is not *live*
+* *querySelector* return a single element
+  * first matching element or null
+
+## Positioning and Animating
+
+* *position* style property
+  *static* by default
+
+* *relative* takes up space in document
+  * *top* and *left* style properties can be used to move element
+    relative to that normal place
+* *absolute* removed from the normal documnt flow
+  * no longer takes up space
+  * and may overlap with other elements
+  * *top* and *leff* properties used to absolutely position element
+    relative to the top-left cornet of nearest enclosing element
+    that isn't *static*, or relative to the document if nosuch enclosing exists
+
+### Can be used to create animation
+
+```html
+<p style="text-align: center">
+  <img src="img/cat.png" style="position: relative">
+</p>
+<script>
+  let cat = document.querySelector("img");
+  let angle = Math.PI / 2;
+  function animate(time, lastTime) {
+    if (lastTime != null) {
+      angle += (time - lastTime) * 0.001;
+    }
+    cat.style.top = (Math.sin(angle) * 20) + "px";
+    cat.style.left = (Math.cos(angle) * 200) + "px";
+    requestAnimationFrame(newTime => animate(newTime, time));
+  }
+  requestAnimationFrame(animate);
+</script>
+```
+
+#### [see in browser](./example.php#animation)
+
+* *requestAnimationFrame* [mdn](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame)
+* *animate*
+
+* *Math.cos*
+* *Math.sin*

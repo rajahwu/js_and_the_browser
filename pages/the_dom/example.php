@@ -30,6 +30,7 @@ include(SHARED_PATH . '/header.php');
   echo '</pre></code>';
   ?>
 
+  <h2 id="attributes">offsetHeigh and offsetWidth</h2>
   <div class="flex flex-col items-center justify-center border-2 p-5 mx-5 bg-slate-500 text-white">
     <div class="bg-slate-500 text-white p-5 w-96">
       <span class="text-orange-800 mb-5">See console for clientHeight and offsetHeigh of red bordered element</span>
@@ -72,6 +73,13 @@ include(SHARED_PATH . '/header.php');
         just enough to find it immature the moment we turn away
         from it.
       </blockquote>
+    </div>
+    
+  <h2 id="animation">Animation</h2>
+    <div class="flex mx-auto w-16 border-2 bg-blue-600">
+      <p style="text-align: center" class="flex items-center">
+        <img id="cat" src="./assets/cat.svg" width="24" height="24" style="position: relative">
+      </p>
     </div>
 
     <div id="layout">
@@ -143,6 +151,18 @@ include(SHARED_PATH . '/header.php');
       target.firstChild.nodeValue = "X".repeat(total);
     });
     // → clever took 0 ms
+
+  let cat = document.querySelector("#cat");
+  let angle = Math.PI / 2;
+  function animate(time, lastTime) {
+    if (lastTime != null) {
+      angle += (time - lastTime) * 0.001;
+    }
+    cat.style.top = (Math.sin(angle) * 20) + "px";
+    cat.style.left = (Math.cos(angle) * 200) + "px";
+    requestAnimationFrame(newTime => animate(newTime, time));
+  }
+  requestAnimationFrame(animate);
   </script>
 
   <?php include(SHARED_PATH . '/footer.php');

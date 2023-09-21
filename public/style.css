@@ -8873,6 +8873,10 @@ details.collapse summary::-webkit-details-marker {
   width: 50%;
 }
 
+.w-16 {
+  width: 4rem;
+}
+
 .flex-shrink {
   flex-shrink: 1;
 }
@@ -9853,6 +9857,11 @@ details.collapse summary::-webkit-details-marker {
 .bg-slate-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(100 116 139 / var(--tw-bg-opacity));
+}
+
+.bg-blue-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(37 99 235 / var(--tw-bg-opacity));
 }
 
 .decoration-slice {
