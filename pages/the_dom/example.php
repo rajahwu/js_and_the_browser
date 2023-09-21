@@ -1,6 +1,7 @@
 <?php include('../../private/initialize.php');
 include(SHARED_PATH . '/header.php');
 ?>
+
 <div class="container p-5 m-5 prose">
   <a href="..">back</a>
   <h1>The DOM Examples</h1>
@@ -30,6 +31,12 @@ include(SHARED_PATH . '/header.php');
   ?>
 
   <div class="flex flex-col items-center justify-center border-2 p-5 mx-5 bg-slate-500 text-white">
+    <div class="bg-slate-500 text-white p-5 w-96">
+      <span class="text-orange-800 mb-5">See console for clientHeight and offsetHeigh of red bordered element</span>
+      <p class="mt-0" style="border: 3px solid red">
+        I'm boxed in
+      </p>
+    </div>
     <p class="text-xl mb-0 h-16">The <img class="inline-block" src="./assets/cat.svg" width="16" height="16" alt="Cat"> in the
       <img class="inline-block" src="./assets/hat.svg" width="16" height="16" alt="Hat">.
     </p>
@@ -65,6 +72,11 @@ include(SHARED_PATH . '/header.php');
         just enough to find it immature the moment we turn away
         from it.
       </blockquote>
+    </div>
+
+    <div id="layout">
+      <p><span id="one"></span></p>
+      <p><span id="two"></span></p>
     </div>
   </div>
 
@@ -105,6 +117,32 @@ include(SHARED_PATH . '/header.php');
         ", preface to the second edition of ",
         elt("em", "The Open Society and Its Enemies"),
         ", 1950"));
+
+    let para = document.body.getElementsByTagName("p")[0];
+    console.log("clientHeight:", para.clientHeight);
+    console.log("offsetHeight:", para.offsetHeight);
+
+    function time(name, action) {
+      let start = Date.now(); // Current time in milliseconds
+      action();
+      console.log(name, "took", Date.now() - start, "ms");
+    }
+
+    time("naive", () => {
+      let target = document.getElementById("one");
+      while (target.offsetWidth < 2000) {
+        target.appendChild(document.createTextNode("X"));
+      }
+    });
+    // → naive took 87 ms
+
+    time("clever", function() {
+      let target = document.getElementById("two");
+      target.appendChild(document.createTextNode("XXXXX"));
+      let total = Math.ceil(2000 / (target.offsetWidth / 5));
+      target.firstChild.nodeValue = "X".repeat(total);
+    });
+    // → clever took 0 ms
   </script>
 
   <?php include(SHARED_PATH . '/footer.php');

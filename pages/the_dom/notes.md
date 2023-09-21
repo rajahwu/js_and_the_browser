@@ -162,3 +162,75 @@ console.log(link.href);
 ```
 
 #### [see in browser](./example.php#attributes)
+
+### Layout
+
+* *block* elements
+* *inline* elements
+
+* *offsetWidth* | *offsetHeight* [mdn](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetHeight)
+  * gives space of element in *pixels*
+* *clientWidth* | *clientHeight
+  * gives the size of space *inside* the element (ignoring border with)
+
+* *getBoundingCLientRect*
+  * returns *top*, *bottom*, *letf*, and *right* properites
+  * positions of the sides relative to the top lef of screen
+* *pageXOffset* | *pageYOffset*
+
+ When a program asks for the position or size of something by reading properties such as offsetHeight or calling getBoundingClientRect, providing correct information requires computing a layout.
+
+A program that repeatedly alternates between reading DOM layout information and changing the DOM forces a lot of layout computations to happen and will consequently run very slowly.
+
+```html
+<p><span id="one"></span></p>
+<p><span id="two"></span></p>
+
+<script>
+  function time(name, action) {
+    let start = Date.now(); // Current time in milliseconds
+    action();
+    console.log(name, "took", Date.now() - start, "ms");
+  }
+
+  time("naive", () => {
+    let target = document.getElementById("one");
+    while (target.offsetWidth < 2000) {
+      target.appendChild(document.createTextNode("X"));
+    }
+  });
+  // → naive took 32 ms
+
+  time("clever", function() {
+    let target = document.getElementById("two");
+    target.appendChild(document.createTextNode("XXXXX"));
+    let total = Math.ceil(2000 / (target.offsetWidth / 5));
+    target.firstChild.nodeValue = "X".repeat(total);
+  });
+  // → clever took 1 ms
+</script>
+```
+
+#### [see in browser](./example.php#layout)
+
+### Styling
+
+* A *Style* attribute may contain one or more *declarations*
+
+```html
+<p><a id="link" href="." style="color: green; border: none;">Green link</a></p>
+<script>
+  document.getElementById("link").style.color = "magenta";
+  document.getElementById("link").style["font-family"] = "mono";
+  document.getElementById("link").style.fontFamilty = "mono";
+</script>
+```
+
+### Cascading Styles
+
+* *Cascading Style Sheets (CSS)*
+* *style sheet*: set of rulles for how to style elements in a document.
+  * most recently read rule get a higher precedence
+  * if rules have the same *specificity*
+
+### Query Selector
