@@ -74,8 +74,8 @@ include(SHARED_PATH . '/header.php');
         from it.
       </blockquote>
     </div>
-    
-  <h2 id="animation">Animation</h2>
+
+    <h2 id="animation">Animation</h2>
     <div class="flex mx-auto w-16 border-2 bg-blue-600">
       <p style="text-align: center" class="flex items-center">
         <img id="cat" src="./assets/cat.svg" width="24" height="24" style="position: relative">
@@ -152,17 +152,29 @@ include(SHARED_PATH . '/header.php');
     });
     // → clever took 0 ms
 
-  let cat = document.querySelector("#cat");
-  let angle = Math.PI / 2;
-  function animate(time, lastTime) {
-    if (lastTime != null) {
-      angle += (time - lastTime) * 0.001;
+    let cat = document.querySelector("#cat");
+    let angle = Math.PI / 2;
+
+    function animate(time, lastTime) {
+      if (lastTime != null) {
+        angle += (time - lastTime) * 0.001;
+      }
+
+      const topPosition = (Math.sin(angle) * 20 + "px");
+      const leftPosition = (Math.cos(angle) * 200 + "px");
+
+      const leftPositionInt = leftPosition;
+      // console.log(parseInt(leftPositionInt))
+      if (leftPositionInt >= 0) {
+        cat.style.zIndex = "-1";
+      } else {
+        cat.style.zIndex = "2";
+      }
+      cat.style.top = topPosition;
+      cat.style.left = leftPosition;
+      requestAnimationFrame(newTime => animate(newTime, time));
     }
-    cat.style.top = (Math.sin(angle) * 20) + "px";
-    cat.style.left = (Math.cos(angle) * 200) + "px";
-    requestAnimationFrame(newTime => animate(newTime, time));
-  }
-  requestAnimationFrame(animate);
+    requestAnimationFrame(animate);
   </script>
 
   <?php include(SHARED_PATH . '/footer.php');
