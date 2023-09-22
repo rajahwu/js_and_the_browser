@@ -30,6 +30,14 @@ echo htmlspecialchars('
 
 <div id="mountains"></div>
 
+<h2>Elements by Tag Name</h2>
+
+<div id="ex_2">
+    <h1>Heading with a <span>span</span> element.</h1>
+    <p>A paragraph with <span>one</span>, <span>two</span>
+    spans.</p>
+</div>
+
 <script>
     const MOUNTAINS = [{
         name: "Kilimanjaro",
@@ -92,5 +100,29 @@ echo htmlspecialchars('
     });
 
     table.style["text-align"] = "right";
+
+function byTagName(node, tagName) {
+    // Your code here.
+    const elements = []
+    const nodes = Array.from(node.children);
+    
+    nodes.forEach(node => {
+        console.log("nodeName:", node.nodeName, "tagName", tagName.toUpperCase())
+        if(node.nodeName === tagName.toUpperCase()) {
+            console.log(node)
+            elements.push(node)
+        };
+       
+    })
+    return elements;
+  }
+
+  console.log(byTagName(document.body, "h1").length);
+  // → 1
+  console.log(byTagName(document.body, "span").length);
+  // → 3
+  let para = document.querySelector("p");
+  console.log(byTagName(para, "span").length);
+  // → 2
 </script>
        <?php include(SHARED_PATH . '/footer.php'); ?>
