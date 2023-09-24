@@ -15,7 +15,7 @@ define("SHARED_PATH", PRIVATE_PATH . '/shared');
 // * Do not need to include the domain
 // * Use same document root as webserver
 // * Can set a hardcoded value:
-// define("WWW_ROOT", 'http://172.23.207.28/apps/Training/browser/public/');
+// define("WWW_ROOT", '/apps/Training/browser/public/');
 // define("WWW_ROOT", '');
 // * Can dynamically find everything in URL up to "/public
 $public_end = strpos($_SERVER['SCRIPT_NAME'], '/public') + 7;
@@ -28,6 +28,8 @@ define("WWW_ROOT", $doc_root);
 // require_once('validation_functions.php');
 
 // $db = db_connect();
+require('/var/www/html/apps/Training/browser/vendor/autoload.php');
+$Parsedown = new Parsedown(); 
 
 $errors = [];
 ?>

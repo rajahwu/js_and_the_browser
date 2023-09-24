@@ -8,3 +8,4 @@
     <link rel="stylesheet" href="/apps/Training/browser/public/style.css">
 </head>
 <body>
+    <header></header>
