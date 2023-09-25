@@ -5,21 +5,21 @@ const pElements = document.querySelectorAll('p');
 // Get the slideshow container
 const slideshowContainer = document.getElementById('slideshow-container');
 
-const h1Element = document.querySelectorAll('h1');
-slideshowContainer.appendChild(h1Element[h1Element.length - 1])
+const h1Element = document.querySelector('h1');
+slideshowContainer.appendChild(h1Element);
 
 
 // Loop through and move each <h2> and <p> element into a new <div> with the class "slideshow-item"
 h2Elements.forEach((h2, index) => {
- 
+
   const p = pElements[index];
   const slideshowItem = document.createElement('div');
   slideshowItem.classList.add('slideshow-item');
-  
+
   // Clone the <h2> and <p> elements and append them to the new <div>
   slideshowItem.appendChild(h2.cloneNode(true));
   slideshowItem.appendChild(p.cloneNode(true));
-  
+
   slideshowContainer.appendChild(slideshowItem);
 });
 

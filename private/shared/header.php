@@ -1,6 +1,6 @@
 <?php include_once(__DIR__ . '/../initialize.php') ?>
 <!DOCTYPE html>
-<html lang="en">
+<html data-theme="retro" lang="en">
 
 <head>
     <meta charset="UTF-8">

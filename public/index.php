@@ -6,8 +6,7 @@ include('../vendor/autoload.php');
 $Parsedown = new Parsedown();
 ?>
 <div class="container flex">
-    <div class="prose">
-        <h1>The Browser</h1>
+    <div class="mx-5 prose prose-h1:text-primary prose-h2:text-secondary prose-a:text-accent hover:text-secondary">
         <div id="slideshow-container"></div>
         <?php echo $Parsedown->text(file_get_contents("../readme.md")); ?>
     </div>
