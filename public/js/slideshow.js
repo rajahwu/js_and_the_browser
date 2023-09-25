@@ -54,20 +54,20 @@ function slideLeft() {
   slideshowItems[currentIndex].style.display = 'block';
 }
 
+const leftSlideBtn = document.getElementById('left_slide_btn');
+leftSlideBtn.addEventListener('click', slideLeft);
+
 function slideRight() {
   slideshowItems[currentIndex].style.display = 'none';
   currentIndex = (currentIndex + 1) % slideshowItems.length;
   slideshowItems[currentIndex].style.display = 'block';
 }
 
+const rightSlideBtn = document.getElementById('right_slide_btn');
+rightSlideBtn.addEventListener('click', slideRight);
+
 // Show the first slide
 showSlide(currentIndex);
-
-const leftSlideBtn = document.getElementById('left_slide_btn');
-const rightSlideBtn = document.getElementById('right_slide_btn');
-
-leftSlideBtn.addEventListener('click', slideLeft);
-rightSlideBtn.addEventListener('click', slideRight);
 
 // Start the slideshow
 // setInterval(nextSlide, 4000); // Change slide every 4 seconds (adjust as needed)

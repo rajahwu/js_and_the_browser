@@ -1,6 +1,6 @@
 <?php include_once(__DIR__ . '/../initialize.php') ?>
 <!DOCTYPE html>
-<html data-theme="retro" lang="en">
+<html data-theme="autumn" lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -14,5 +14,4 @@
         <div class="mockup-browser-toolbar">
             <div class="input border border-base-300"><a href="https://eloquentjavascript.net/index.html" target="_blank">https://eloquentjavascript.net/index.html</a></div>
         </div>
-        <div class="flex justify-center px-4 py-16 border-t border-base-300">The Browser</div>
     </header>
