@@ -1,3 +1,5 @@
+<?php // include('../shared/pages_layout.php'); ?>
+
 <?php include('../../private/initialize.php');
       include(SHARED_PATH . '/header.php');
       require '../../vendor/autoload.php';
