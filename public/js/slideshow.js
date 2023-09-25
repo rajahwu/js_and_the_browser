@@ -3,7 +3,7 @@ const h2Elements = document.querySelectorAll('h2');
 const pElements = document.querySelectorAll('p');
 
 // Get the slideshow container
-const slideshowContainer = document.getElementById('slideshow-container');
+const slideshowContainer = document.getElementById('slideshow-content');
 
 const h1Element = document.querySelector('h1');
 slideshowContainer.appendChild(h1Element);
@@ -48,14 +48,26 @@ function showSlide(index) {
   slideshowItems[index].style.display = 'block';
 }
 
-function nextSlide() {
+function slideLeft() {
+  slideshowItems[currentIndex].style.display = 'none';
+  currentIndex = (currentIndex - 1 + slideshowItems.length) % slideshowItems.length;
+  slideshowItems[currentIndex].style.display = 'block';
+}
+
+function slideRight() {
   slideshowItems[currentIndex].style.display = 'none';
   currentIndex = (currentIndex + 1) % slideshowItems.length;
   slideshowItems[currentIndex].style.display = 'block';
 }
 
 // Show the first slide
-// showSlide(currentIndex);
+showSlide(currentIndex);
+
+const leftSlideBtn = document.getElementById('left_slide_btn');
+const rightSlideBtn = document.getElementById('right_slide_btn');
+
+leftSlideBtn.addEventListener('click', slideLeft);
+rightSlideBtn.addEventListener('click', slideRight);
 
 // Start the slideshow
 // setInterval(nextSlide, 4000); // Change slide every 4 seconds (adjust as needed)

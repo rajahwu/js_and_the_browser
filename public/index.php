@@ -6,8 +6,12 @@ include('../vendor/autoload.php');
 $Parsedown = new Parsedown();
 ?>
 <div class="container flex">
-    <div class="mx-5 prose prose-h1:text-primary prose-h2:text-secondary prose-a:text-accent hover:text-secondary">
-        <div id="slideshow-container"></div>
+    <div class="mx-auto prose prose-h1:text-primary prose-h2:text-secondary prose-a:text-accent hover:text-secondary">
+        <div id="slideshow-container" class="flex">
+            <button id="left_slide_btn">left</button>
+            <div id="slideshow-content"></div>
+            <button id="right_slide_btn">right</button>
+        </div>
         <?php echo $Parsedown->text(file_get_contents("../readme.md")); ?>
     </div>
 </div>
