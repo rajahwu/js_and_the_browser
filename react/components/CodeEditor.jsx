@@ -1,15 +1,15 @@
-import React from "react";
+import { useState, useCallback } from "react";
 import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/theme-monokai"; // Choose a theme
 
 
-export default function HomePage() {
-    const [value, setValue] = React.useState("console.log('hello world!');");
-    const onChange = React.useCallback((val, viewUpdate) => {
+export default function CodeEditor() {
+    const [value, setValue] = useState("console.log('hello world!');");
+    const onChange = useCallback((val, viewUpdate) => {
         console.log('val:', val);
         setValue(val);
-      }, []);
+    }, []);
     return <AceEditor
         mode="javascript" // Set the programming language mode
         theme="monokai"   // Choose a theme
@@ -21,5 +21,4 @@ export default function HomePage() {
         width="100%" // Set the editor width
         height="250px" // Set the editor height
     />
-
 }
