@@ -4449,6 +4449,10 @@ html {
   color: hsl(var(--p) / var(--tw-text-opacity));
 }
 
+.prose-h2\:text-center :is(:where(h2):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  text-align: center;
+}
+
 .prose-h2\:text-secondary :is(:where(h2):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
   --tw-text-opacity: 1;
   color: hsl(var(--s) / var(--tw-text-opacity));
